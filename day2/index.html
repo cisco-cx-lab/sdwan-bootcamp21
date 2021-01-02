@@ -139,8 +139,8 @@
 </ul>
 <p>In this task, you will configure local route policy on DC1-SanJose and DC2-NewYork to prevent routing loop between OSPF and OMP redistribution.</p>
 <p>You need<br />
-1. Configure OSPF as service side routing protocol at dc2-cedge1, and form OSPF neighbor with DCI router. <br>
-2. Configure local route-policy on dc2-cedge1 to <br>
+1. Configure OSPF as service side routing protocol for dc2-cedge1/dc2-cedge2, and form OSPF neighbor with DC2-CSR router. <br>
+2. Configure local route-policy on dc2-cedge1/dc2-cedge2 to <br>
   - tag 200 for routes being redistributed from OMP to OSPF. <br>
   - block OSPF routes with tag 100 on service side from DCI router <br>
 3. Configure local route-policy on dc1-cedge1/dc1-cedge2 to <br>

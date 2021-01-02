@@ -79,9 +79,7 @@
         
             <li><a class="toctree-l4" href="#14-verify-lab-topology">1.4. Verify lab topology</a></li>
         
-            <li><a class="toctree-l4" href="#this-will-take-15-mins-to-load">This will take 15 mins to load.....</a></li>
-        
-            <li><a class="toctree-l4" href="#this-will-take-35-mins-to-load">This will take 35 mins to load.....</a></li>
+            <li><a class="toctree-l4" href="#if-controllers-or-wan-edge-status-does-not-match-above-screenshot-please-try-reboot-vmanagevbondvsmart-from-console-if-that-does-not-help-please-ask-your-instructor-to-swap-a-new-pod">If controllers or WAN edge status does not match above screenshot, please try reboot vManage/vBond/vSmart from console. If that does not help, please ask your instructor to swap a new pod.</a></li>
         
         </ul>
     
@@ -181,27 +179,18 @@
 <p><strong>Note:</strong> the lab topology has been pre-loaded for each pod. After login POC-tool console, you should see topology from 'Master View'</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4.PNG" width="400"/></p>
 <p></br></br>
-- Select <strong>v20.3.1</strong> as VNF Version, and <strong>Next</strong></p>
-<h5 id="this-will-take-15-mins-to-load">This will take 15 mins to load.....</h5>
-<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_5.PNG" width="200"/>
-</br></br>
-- After topology is loaded, <strong>Deploy</strong> Control Plane
-</br></br>
+- Login vManage to verify all controllers and WAN edges are up and running.
+<a href="https://198.18.133.200:8443">https://198.18.133.200:8443</a></p>
+<p></br></br>
 <img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_c.PNG" width="600"/>
 </br></br></p>
 <ul>
 <li>
-<h5 id="this-will-take-35-mins-to-load">This will take 35 mins to load.....</h5>
-<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_d.PNG" width="400"/></p>
+<h5 id="if-controllers-or-wan-edge-status-does-not-match-above-screenshot-please-try-reboot-vmanagevbondvsmart-from-console-if-that-does-not-help-please-ask-your-instructor-to-swap-a-new-pod">If controllers or WAN edge status does not match above screenshot, please try reboot vManage/vBond/vSmart from console. If that does not help, please ask your instructor to swap a new pod.</h5>
 </li>
-<li>
-<p>Once <strong>Control Plane</strong> is deployed, select each site and <strong>Deploy</strong></p>
-</li>
-<li>Click <strong>OK</strong> once all branches are deployed.
-<img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_e.PNG" width="400"/>  </li>
 </ul>
 <h2 id="2-lab-topology">2. Lab Topology</h2>
-<p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. To view the logical topology, click <strong>Master View</strong> from control panel on the left.</p>
+<p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. To view the topology for each SDWAN site, login POC tool console and click the site name from the Topology View on the left.</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/2-1.PNG" width="600"/></p>
 <p>The connectivity and basic routing are pre-configured for the lab; here is the summary of the IP schema and information for each site.</p>
 <table>
@@ -216,7 +205,7 @@
 <tbody>
 <tr>
 <td>Control Plane</td>
-<td>19.1.0.0/24</td>
+<td>19.1.1.0/24</td>
 <td></td>
 <td>Static</td>
 </tr>
@@ -233,10 +222,16 @@
 <td>Static</td>
 </tr>
 <tr>
-<td>DC-SanJoe</td>
+<td>DC1-SanJoe</td>
 <td>10.10.100.0/24</td>
-<td>10</td>
+<td>100</td>
 <td>OSPF,BGP ASN 100</td>
+</tr>
+<tr>
+<td>DC2-NewYork</td>
+<td>10.10.200.0/24</td>
+<td>200</td>
+<td>OSPF,BGP ASN 200</td>
 </tr>
 <tr>
 <td>BR3-LosAngeles</td>
@@ -245,16 +240,10 @@
 <td>Static</td>
 </tr>
 <tr>
-<td>BR1</td>
-<td>11.1.1.0/24</td>
-<td>100</td>
+<td>BR4-RTP</td>
+<td>10.40.100.0/24</td>
+<td>40</td>
 <td>VRRP</td>
-</tr>
-<tr>
-<td>DC2-NewYork</td>
-<td>10.10.200.0/24</td>
-<td>200</td>
-<td>Static</td>
 </tr>
 </tbody>
 </table>
