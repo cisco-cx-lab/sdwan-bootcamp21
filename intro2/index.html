@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Intro - sdwan-bootcamp21</title>
+  <title>Introduction - sdwan-bootcamp21</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Intro";
-    var mkdocs_page_input_path = "intro.md";
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "intro2.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -52,8 +52,10 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Lab Guide</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../intro2/">Introduction</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Introduction</a>
+    <ul class="current">
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../day1/">Day 1 Tasks</a>
                     </li>
@@ -88,8 +90,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Lab Guide &raquo;</li>
+        
+      
     
-    <li>Intro</li>
+    <li>Introduction</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -126,8 +132,31 @@
 </tbody>
 </table>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_3.PNG" width="400"/></p>
-<h5 id="14-verify-lab-topology">1.4. Verify lab topology</h5>
-<p><strong>Note:</strong> the lab topology has been pre-loaded for each pod. After login POC-tool console, you should see topology from 'Master View'</p>
+<h5 id="14-import-lab-topology">1.4. Import lab topology</h5>
+<p><strong>Note:</strong> the lab topology can be downloaded from <a href="https://cisco.box.com/s/g3z8f5dkgchm2ywts9cz2jmfr344qof5"><strong>box folder</strong></a> <br></p>
+<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4.PNG" width="400"/></p>
+<p></br></br>
+- Select <strong>v20.3.3</strong> as VNF Version, and <strong>Next</strong></p>
+<h5 id="this-will-take-15-mins-to-load">This will take 15 mins to load.....</h5>
+<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_5.PNG" width="200"/>
+</br></br>
+- After topology is loaded, <strong>Deploy</strong> Control Plane
+</br></br>
+<img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_c.PNG" width="600"/>
+</br></br></p>
+<ul>
+<li>
+<h5 id="this-will-take-35-mins-to-load">This will take 35 mins to load.....</h5>
+<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_d.PNG" width="400"/></p>
+</li>
+<li>
+<p>Once <strong>Control Plane</strong> is deployed, select each site and <strong>Deploy</strong></p>
+</li>
+<li>Click <strong>OK</strong> once all branches are deployed.
+<img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_e.PNG" width="400"/>  </li>
+</ul>
+<h5 id="15-verify-lab-topology">1.5. Verify lab topology</h5>
+<p><strong>Note:</strong> After all sites are successfully deployed, you should see topology from 'Master View'</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4.PNG" width="800"/></p>
 <p></br></br>
 - Login vManage to verify all controllers and WAN edges are up and running.
@@ -135,11 +164,6 @@
 <p></br></br>
 <img src="https://leitian123.github.io/sdwan-bootcamp21/img/1_4_c.PNG" width="600"/>
 </br></br></p>
-<ul>
-<li>
-<h5 id="if-controllers-or-wan-edge-status-does-not-match-above-screenshot-please-try-reboot-vmanagevbondvsmart-from-console-if-that-does-not-help-please-ask-your-instructor-to-swap-a-new-pod">If controllers or WAN edge status does not match above screenshot, please try reboot vManage/vBond/vSmart from console. If that does not help, please ask your instructor to swap a new pod.</h5>
-</li>
-</ul>
 <h2 id="2-lab-topology">2. Lab Topology</h2>
 <p>The lab is built with (NFV) network function virtualization. There is no physical appliance in the lab. To view the topology for each SDWAN site, login POC tool console and click the site name from the Topology View on the left.</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/2-1.PNG" width="600"/></p>
@@ -203,6 +227,15 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../day1/" class="btn btn-neutral float-right" title="Day 1 Tasks">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -225,6 +258,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../day1/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
