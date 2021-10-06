@@ -109,22 +109,37 @@
             <div class="section">
               
                 <h3 id="34-day-4-tasks"><strong>3.4. Day 4 tasks</strong></h3>
-<p>In Day 4 lab, you will enable <strong>DIA</strong> on BR3 and convert QoS local marking policy to Central QoS policy.</p>
+<p>In Day 4 lab, you will:
+1. Enable <strong>DIA</strong> on BR3<br />
+2. Convert QoS local marking policy to Central QoS policy
+3. Enable Cloud OnRamp for SaaS with DIA site and Gateway site
+4. Integrate with Umbrella using SIG tunnel</p>
 <p><strong>3.4.1. Direct Internet Access</strong> <br>
 Configure DIA on BR3 to use local internet transport for internet-bound traffic. <br>
 To demonstrate the result of DIA, please capture and compare the output of <strong>'traceroute 19.1.7.10'</strong> from BR3_desk console. <br>
 <code>viptela@ubuntu:~$ traceroute 19.1.7.10</code></p>
 <p><strong>Note</strong>: save the before and after traceroute screenshots to a file    </p>
+<p><strong>3.4.1b. Direct Internet Access With Tracker</strong> <br>
+<strong>Note</strong>: Optional task
+Disconnect the internet connection from POC Tool console for site BR3-LosAngeles. This will simulate a brownout failure.</p>
+<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/3_4_1b.PNG" width="600"/> <br></p>
+<p>Observe the this outage blackholing internet traffic for site BR3.
+Configure Interface tracker to fix this issue.</p>
 <p><strong>3.4.2. QoS Central policy</strong> <br>
 To enforce QoS policy standardization across the fabric, change the local QoS marking policy configured in day 2 task to a centralized QoS policy and apply to all sites.</p>
 <p><strong>Note</strong>: save the preview of updated central policy to a file.    </p>
-<p><strong>3.4.3. Automation tool - Sastre</strong><br></p>
+<p><strong>3.4.3. Cloud OnRamp for SaaS</strong> <br>
+Enable Cloud OnRamp for SaaS on vManage. Then follow the workflow to enable CoR SaaS for <strong>Salesforce</strong> with site BR4-RTP as DIA site.</p>
+<p><strong>3.4.4. Umbrella SASE Integration</strong> <br>
+In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will use the Security Internet Gateway(SIG) feature template to build a SIG tunnel to Umbrella for BR3-LosAngeles. The Umbrella API key is pre-configured in feature template <strong>CX_SIG_Creden_v01</strong>. You don't need modify it, just add <strong>ONE</strong> ipsec tunnel source from the internet transport interface. <br>
+Route all traffic over SIG tunnel to Umbrella. Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my ip or simply traceroute.</p>
+<p><strong>3.4.5. Automation tool - Sastre</strong><br></p>
 <p>Sastre is a Cisco internal developted automation tool for SD-WAN. Sastre is available in two flavors:</p>
 <p><a href="https://github.com/CiscoDevNet/sastre">Sastre</a>: Public open-source under MIT license available on Cisco DevNet repository. Supports a limited set of tasks.</p>
 <p><a href="https://wwwin-github.cisco.com/AIDE/Sastre-Pro">Sastre-Pro</a>: Cisco licensed version, supporting the full feature-set. Sastre-Pro is available for customers with a CX BCS subscription and internally at Cisco.</p>
 <p>Download and install <a href="https://wwwin-github.cisco.com/AIDE/Sastre-Pro">Sastre-Pro</a>; backup all policies and templates from lab vManage to your local drive.  </p>
-<p><strong>3.4.4. Upgrade</strong> <br>
-Upgrade controllers to 19.2.3 and cEdges to 16.12.3</p>
+<p><strong>3.4.6. Upgrade</strong> <br>
+Upgrade controllers to 20.6.1</p>
 <h4 id="submit-your-saved-files-from-day-4-task-to-box-folder">Submit your saved files from Day 4 task to <a href="https://cisco.app.box.com/folder/126787795425">box folder</a></h4>
 <p><br>
 <em>Note</em>*: the step by step video below should be only used for reference
