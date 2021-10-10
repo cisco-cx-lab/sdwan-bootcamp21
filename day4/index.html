@@ -131,10 +131,19 @@ To enforce QoS policy standardization across the fabric, change the local QoS ma
 <p><strong>3.4.3. Cloud OnRamp for SaaS</strong> <br>
 Enable Cloud OnRamp for SaaS on vManage. Then follow the workflow to enable CoR SaaS for <strong>Salesforce</strong> with site BR4-RTP as DIA site.</p>
 <p><strong>3.4.4. Umbrella SASE Integration</strong> <br>
-In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will use the Security Internet Gateway(SIG) feature template to build a SIG tunnel to Umbrella for BR3-LosAngeles. The Umbrella API key is pre-configured in feature template <strong>CX_SIG_Creden_v01</strong>. You don't need modify it, just add <strong>ONE</strong> ipsec tunnel source from the internet transport interface. <br>
-Route all traffic over SIG tunnel to Umbrella. Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my ip or simply traceroute.</p>
+In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will follow the steps below to build a SIG tunnel to Umbrella from site <strong>BR3-LosAngeles</strong>. <br>
+- Verify public DNS server is defined under VPN0
+- Verify NAT is enabled on interface Gig1 with public-internet color
+- Change service side interface Gig3 IP address to <strong>10.30.1##.1/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.1/24</strong>.
+- Create SIG template <strong>CX_SIG_v1</strong>, and configure interface <strong>ipsec#</strong> matches your <strong>POD</strong> number. For example, <strong>POD1</strong> will use <strong>ipsec1</strong>. For this lab, you will only create one ipsec interface.
+- Modify <strong>br3-cedge1</strong> device template that you created from day1; add SIG template, <strong>CX_SIG_v1</strong> and pre-configured SIG credential template <strong>CX_SIG_Creden_v01</strong>.<br />
+<strong>Note: The Umbrella API key is pre-configured in feature template 'CX_SIG_Creden_v01'. You don't need to modify it.</strong>
+- Modify VPN1 feature template that you created from day1 for br3-cedge1; add 0.0.0.0/0 <strong>Service Route</strong> to use SIG tunnel.
+- Login <strong>br3-vm1</strong> and change interface <strong>eth0</strong> IP address to <strong>10.30.1##.10/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.10/24</strong>.
+- Change default route on <strong>br3-vm1</strong> to <strong>br3-cedge1</strong> 's Gig3 IP address
+- Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my IP or simply traceroute. </p>
 <p><strong>3.4.5. Automation tool - Sastre</strong><br></p>
-<p>Sastre is a Cisco internal developted automation tool for SD-WAN. Sastre is available in two flavors:</p>
+<p>Sastre is a Cisco internal developed automation tool for SD-WAN. Sastre is available in two flavors:</p>
 <p><a href="https://github.com/CiscoDevNet/sastre">Sastre</a>: Public open-source under MIT license available on Cisco DevNet repository. Supports a limited set of tasks.</p>
 <p><a href="https://wwwin-github.cisco.com/AIDE/Sastre-Pro">Sastre-Pro</a>: Cisco licensed version, supporting the full feature-set. Sastre-Pro is available for customers with a CX BCS subscription and internally at Cisco.</p>
 <p>Download and install <a href="https://wwwin-github.cisco.com/AIDE/Sastre-Pro">Sastre-Pro</a>; backup all policies and templates from lab vManage to your local drive.  </p>
