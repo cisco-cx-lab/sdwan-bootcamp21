@@ -128,17 +128,17 @@ Configure DIA on BR3 to use local internet transport for internet-bound traffic.
 <p>To demonstrate the result of DIA, please capture and compare the output of <strong>'traceroute 19.1.7.10'</strong> from BR3_desk console. <br>
 <code>viptela@ubuntu:~$ traceroute 19.1.7.10</code></p>
 <p><strong>Note</strong>: save the before and after traceroute screenshots to a file    </p>
-<p><strong>3.4.1b. Direct Internet Access With Tracker</strong> <br>
-<strong>Note</strong>: Optional task
-Disconnect the internet connection from POC Tool console for site BR3-LosAngeles. This will simulate a brownout failure.</p>
+<p><strong>3.4.1b. Direct Internet Access With Tracker(optional task)</strong> <br></p>
+<p>Disconnect the internet connection from POC Tool console for site BR3-LosAngeles. This will simulate a brownout failure.</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/3_4_1b.PNG" width="600"/> <br></p>
-<p>Observe the this outage blackholing internet traffic for site BR3.
-Configure Interface tracker to fix this issue.</p>
+<p>Observe the this outage blackholing internet traffic for site BR3.</br></p>
+<p><strong>Configure Interface tracker to fix this issue.</strong></p>
 <p><strong>3.4.2. QoS Central policy</strong> <br>
 To enforce QoS policy standardization across the fabric, change the local QoS marking policy configured in day 2 task to a centralized QoS policy and apply to all sites.</p>
 <p><strong>Note</strong>: save the preview of updated central policy to a file.    </p>
 <p><strong>3.4.3. Cloud OnRamp for SaaS</strong> <br>
-Enable Cloud OnRamp for SaaS on vManage. Then follow the workflow to enable CoR SaaS for <strong>Salesforce</strong> with site BR4-RTP as DIA site.</p>
+Enable Cloud OnRamp for SaaS on vManage. Then follow Cloud OnRamp for SaaS workflow to enable CoR SaaS for <strong>Salesforce</strong> with site BR4-RTP as DIA site.</p>
+<p><strong>Note</strong>: To use SaaS, the WAN Edge will intercept DNS request function as proxy. Make sure public DNS is configured for VPN0. For system to recognize an interface as local DIA, make sure NAT is enabled on that interfaces.</p>
 <p><strong>3.4.4. Umbrella SASE Integration</strong> <br>
 In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will follow the steps below to build a SIG tunnel to Umbrella from site <strong>BR3-LosAngeles</strong>. <br></p>
 <ul>
@@ -152,6 +152,7 @@ In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from
 <p>Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my IP or simply traceroute.</p>
 </li>
 </ul>
+<p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/3_4_4.PNG" width="600"/> <br></p>
 <p><strong>3.4.5. Automation tool - Sastre</strong><br></p>
 <p>Sastre is a Cisco internal developed automation tool for SD-WAN. Sastre is available in two flavors:</p>
 <p><a href="https://github.com/CiscoDevNet/sastre">Sastre</a>: Public open-source under MIT license available on Cisco DevNet repository. Supports a limited set of tasks.</p>
