@@ -109,14 +109,23 @@
             <div class="section">
               
                 <h3 id="34-day-4-tasks"><strong>3.4. Day 4 tasks</strong></h3>
-<p>In Day 4 lab, you will:
-1. Enable <strong>DIA</strong> on BR3<br />
-2. Convert QoS local marking policy to Central QoS policy
-3. Enable Cloud OnRamp for SaaS with DIA site and Gateway site
-4. Integrate with Umbrella using SIG tunnel</p>
+<p>In Day 4 lab, you will:</p>
+<ol>
+<li>Enable <strong>DIA</strong> on BR3  </li>
+<li>Convert QoS local marking policy to Central QoS policy</li>
+<li>Enable Cloud OnRamp for SaaS with DIA site and Gateway site</li>
+<li>Integrate with Umbrella using SIG tunnel</li>
+</ol>
 <p><strong>3.4.1. Direct Internet Access</strong> <br>
-Configure DIA on BR3 to use local internet transport for internet-bound traffic. <br>
-To demonstrate the result of DIA, please capture and compare the output of <strong>'traceroute 19.1.7.10'</strong> from BR3_desk console. <br>
+Configure DIA on BR3 to use local internet transport for internet-bound traffic. <br></p>
+<ul>
+<li>Verify public DNS server is defined under VPN0</li>
+<li>Verify NAT is enabled on interface Gig1 with public-internet color</li>
+<li>Change service side interface Gig3 IP address to <strong>10.30.1##.1/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.1/24</strong>.</li>
+<li>Login <strong>br3-vm1</strong> and change interface <strong>eth0</strong> IP address to <strong>10.30.1##.10/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.10/24</strong>.</li>
+<li>Change default route on <strong>br3-vm1</strong> to <strong>br3-cedge1</strong> 's Gig3 IP address</li>
+</ul>
+<p>To demonstrate the result of DIA, please capture and compare the output of <strong>'traceroute 19.1.7.10'</strong> from BR3_desk console. <br>
 <code>viptela@ubuntu:~$ traceroute 19.1.7.10</code></p>
 <p><strong>Note</strong>: save the before and after traceroute screenshots to a file    </p>
 <p><strong>3.4.1b. Direct Internet Access With Tracker</strong> <br>
@@ -131,17 +140,18 @@ To enforce QoS policy standardization across the fabric, change the local QoS ma
 <p><strong>3.4.3. Cloud OnRamp for SaaS</strong> <br>
 Enable Cloud OnRamp for SaaS on vManage. Then follow the workflow to enable CoR SaaS for <strong>Salesforce</strong> with site BR4-RTP as DIA site.</p>
 <p><strong>3.4.4. Umbrella SASE Integration</strong> <br>
-In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will follow the steps below to build a SIG tunnel to Umbrella from site <strong>BR3-LosAngeles</strong>. <br>
-- Verify public DNS server is defined under VPN0
-- Verify NAT is enabled on interface Gig1 with public-internet color
-- Change service side interface Gig3 IP address to <strong>10.30.1##.1/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.1/24</strong>.
-- Create SIG template <strong>CX_SIG_v1</strong>, and configure interface <strong>ipsec#</strong> matches your <strong>POD</strong> number. For example, <strong>POD1</strong> will use <strong>ipsec1</strong>. For this lab, you will only create one ipsec interface.
-- Modify <strong>br3-cedge1</strong> device template that you created from day1; add SIG template, <strong>CX_SIG_v1</strong> and pre-configured SIG credential template <strong>CX_SIG_Creden_v01</strong>.<br />
-<strong>Note: The Umbrella API key is pre-configured in feature template 'CX_SIG_Creden_v01'. You don't need to modify it.</strong>
-- Modify VPN1 feature template that you created from day1 for br3-cedge1; add 0.0.0.0/0 <strong>Service Route</strong> to use SIG tunnel.
-- Login <strong>br3-vm1</strong> and change interface <strong>eth0</strong> IP address to <strong>10.30.1##.10/24</strong>, where the 3rd octet variable is your <strong>POD</strong> number. For example, <strong>POD1</strong> will configure Gig3 IP to <strong>10.30.101.10/24</strong>.
-- Change default route on <strong>br3-vm1</strong> to <strong>br3-cedge1</strong> 's Gig3 IP address
-- Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my IP or simply traceroute. </p>
+In IOS XE 17.2.1r and later, auto tunneling to Umbrella as SIG is supported from vManage. In this task, you will follow the steps below to build a SIG tunnel to Umbrella from site <strong>BR3-LosAngeles</strong>. <br></p>
+<ul>
+<li>Create SIG template <strong>CX_SIG_v1</strong>, and configure interface <strong>ipsec#</strong> matches your <strong>POD</strong> number. For example, <strong>POD1</strong> will use <strong>ipsec1</strong>. For this lab, you will only create one ipsec interface.</li>
+<li>Modify <strong>br3-cedge1</strong> device template that you created from day1; add SIG template, <strong>CX_SIG_v1</strong> and pre-configured SIG credential template <strong>CX_SIG_Creden_v01</strong>.<br />
+<strong>Note: The Umbrella API key is pre-configured in feature template 'CX_SIG_Creden_v01'. You don't need to modify it.</strong></li>
+<li>
+<p>Modify VPN1 feature template that you created from day1 for br3-cedge1; add 0.0.0.0/0 <strong>Service Route</strong> to use SIG tunnel.</p>
+</li>
+<li>
+<p>Now verify br3-vm1 is using umbrella for internet bound traffic by checking what's my IP or simply traceroute.</p>
+</li>
+</ul>
 <p><strong>3.4.5. Automation tool - Sastre</strong><br></p>
 <p>Sastre is a Cisco internal developed automation tool for SD-WAN. Sastre is available in two flavors:</p>
 <p><a href="https://github.com/CiscoDevNet/sastre">Sastre</a>: Public open-source under MIT license available on Cisco DevNet repository. Supports a limited set of tasks.</p>
