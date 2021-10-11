@@ -114,7 +114,7 @@
 <li><strong>3.2.1. OSPF local policy</strong></li>
 </ul>
 <p>In this task, you will configure local route policy on DC1-SanJose and DC2-NewYork to prevent routing loop between OSPF and OMP redistribution.</p>
-<p><strong>Note</strong>: The VPN1 template created from POC Tool doesn't have anything advertise into OMP. Make sure </p>
+<p><strong>Note</strong>: The VPN1 template created from POC Tool doesn't have anything advertise into OMP. Modify the default VPN1 template for all remotes and DC1 to advertise connected into OMP.</p>
 <p>You need<br />
 1. Configure OSPF as service side routing protocol for dc2-cedge1/dc2-cedge2, and form OSPF neighbor with DC2-CSR router. <br>
 2. Configure local route-policy on dc2-cedge1/dc2-cedge2 to <br>
