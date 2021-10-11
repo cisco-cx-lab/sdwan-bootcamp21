@@ -113,6 +113,7 @@
                 <h3 id="33-day-3-tasks"><strong>3.3. Day 3 tasks</strong></h3>
 <p>In Day 3 lab, you will configure <strong>central policy</strong> for route preference, arbitrary topology, and App-aware routing.</p>
 <h5 id="central-policy">Central policy</h5>
+<p><strong>Note: In order to use Centralized Policy, vSmart needs to be in vManage mode. Use vSmart2 as base line to build CLI template for both vSmart-1 and vSmart-2.</strong></p>
 <p><strong>3.3.1. Configure central route policy</strong><br></p>
 <ul>
 <li>prefer local originated prefixes from DC1 <strong>(10.10.100.0/24)</strong> over DC1 TLOCs <br></li>
@@ -153,7 +154,7 @@
 <p>Select <strong>Preview</strong> from you configured central policy, as show from below screenshot. Save the preview policy to a file.</p>
 <p><img src="https://leitian123.github.io/sdwan-bootcamp21/img/3_3_3.PNG" width="600"/> <br></p>
 <p>After you have created the central policy, try to active it. Are you able to active the policy? Try to fix the error so you can active the central policy.</p>
-<p>To verify App-aware routing, you can use the <strong>latency generator</strong> to introduce delay/jitter/drop. The <strong>latency generator</strong> is between mpls transport and br1-csr1 as show below. Try introduce some latency/jitter/drop and verify whether the app-aware routing works as expected. <br>
+<p>To verify App-aware routing, you can use the <strong>latency generator</strong> to introduce delay/jitter/drop. The <strong>latency generator</strong> is between mpls transport and br4-ce1 as show below. Try introduce some latency/jitter/drop and verify whether the app-aware routing works as expected. <br>
 <img src="https://leitian123.github.io/sdwan-bootcamp21/img/3_3_4.PNG" width="200"/> <br></p>
 <h4 id="submit-your-saved-policy-file-from-day-3-task-to-box-folder">Submit your saved policy file from Day 3 task to <a href="https://cisco.app.box.com/folder/126788105205">box folder</a></h4>
 <p><strong>Note</strong>: the step by step video below should be only used for reference
