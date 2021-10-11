@@ -113,14 +113,18 @@
                 <h3 id="33-day-3-tasks"><strong>3.3. Day 3 tasks</strong></h3>
 <p>In Day 3 lab, you will configure <strong>central policy</strong> for route preference, arbitrary topology, and App-aware routing.</p>
 <h5 id="central-policy">Central policy</h5>
-<p><strong>3.3.1. Configure central route policy</strong><br>
-- prefer local originated prefixes from DC1 <strong>(10.10.100.0/24)</strong> over DC1 TLOCs <br>
-- prefer local originated prefixes from DC2 <strong>(10.10.200.0/24)</strong> over DC2 TLOCs. <br>
-- DC2 will be used as backup path for DC1 prefix and DC1 will be used as backup path for DC2 prefix. <br></p>
-<p><strong>3.3.2. Configure central control policy</strong> <br>
-- build hub-spoke topology with DC1/DC2 as the hub sites and BR3/BR4 as spokes. <br>
-- block tunnels between DC1 and DC2 using central policy <br>
-- <strong>(optional)</strong> Create additional VPN across all sites and make it full mesh topology <br></p>
+<p><strong>3.3.1. Configure central route policy</strong><br></p>
+<ul>
+<li>prefer local originated prefixes from DC1 <strong>(10.10.100.0/24)</strong> over DC1 TLOCs <br></li>
+<li>prefer local originated prefixes from DC2 <strong>(10.10.200.0/24)</strong> over DC2 TLOCs. <br></li>
+<li>DC2 will be used as backup path for DC1 prefix and DC1 will be used as backup path for DC2 prefix. <br></li>
+</ul>
+<p><strong>3.3.2. Configure central control policy</strong> <br></p>
+<ul>
+<li>build hub-spoke topology with DC1/DC2 as the hub sites and BR3/BR4 as spokes. <br></li>
+<li>block tunnels between DC1 and DC2 using central policy <br></li>
+<li><strong>(optional)</strong> Create additional VPN across all sites and make it full mesh topology <br></li>
+</ul>
 <p><strong>3.3.3. Configure Central App-Aware routing policy</strong></p>
 <table>
 <thead>
